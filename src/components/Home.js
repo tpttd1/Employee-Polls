@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { _getQuestions, _getUsers } from "../data/_DATA";
-import { storeQuestions, storeUsers } from "../redux/actions";
+import { getCurrentQuestions, getCurrentUsers } from "../redux/actions";
 import Dashboard from "./Dashboard";
 
 function Home(props) {
@@ -13,16 +12,8 @@ function Home(props) {
   }, [navigate, props.auth]);
 
   useEffect(() => {
-    _getQuestions().then((data) => {
-      const questions = Object.values(data);
-      questions.sort((a, b) => {
-        return b.timestamp - a.timestamp;
-      });
-      props.dispatch(storeQuestions(questions));
-    });
-    _getUsers().then((data) => {
-      props.dispatch(storeUsers(Object.values(data)));
-    });
+    props.dispatch(getCurrentQuestions());
+    props.dispatch(getCurrentUsers());
   }, []);
 
   return (

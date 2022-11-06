@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import { _saveQuestion } from "../data/_DATA";
-import { refreshQuestions } from "../redux/actions";
+import { getCurrentQuestions } from "../redux/actions";
 
 const New = (props) => {
   const onSubmit = (e) => {
@@ -14,7 +14,7 @@ const New = (props) => {
       author: props.author.username,
     };
     _saveQuestion(newQuestion);
-    props.update.dispatch(refreshQuestions());
+    props.update.dispatch(getCurrentQuestions());
     window.alert("Created");
     e.target.reset();
   };
