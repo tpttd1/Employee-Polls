@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense } from "react";
+import { BrowserRouter as Router, useRoutes } from "react-router-dom";
+import Home from "./components/Home";
+import Login from "./components/Login";
+import Error from "./components/Error";
 
-function App() {
+const AppRoute = () => {
+  let routes = useRoutes([
+    { path: "login", element: <Login /> },
+    { path: "/error", element: <Error /> },
+    { path: "/questions", element: <Home /> },
+    { path: "/questions/:question_id", element: <Home /> },
+    { path: "/leaderboard", element: <Home /> },
+    { path: "/new", element: <Home /> },
+    { path: "/", element: <Home /> },
+  ]);
+  return routes;
+};
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Suspense fallback={<div className="loading" />}>
+      <Router>
+        <AppRoute />
+      </Router>
+    </Suspense>
   );
-}
+};
 
 export default App;

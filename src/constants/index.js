@@ -1,0 +1,7 @@
+export const ADD_QUESTION = "ADD_QUESTION";
+export const STORAGE_QUESTIONS = "GET_QUESTIONS";
+
+export const LOGIN_USER = "LOGIN_USER";
+export const LOGIN_USER_SUCCESS = "LOGIN_USER_SUCCESS";
+export const LOGOUT_USER = "LOGOUT_USER";
+export const STORAGE_USERS = "STORAGE_USERS";
