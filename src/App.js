@@ -12,7 +12,7 @@ const AppRoute = () => {
     { path: "/questions/:question_id", element: <Detail /> },
     { path: "/questions", element: <Home /> },
     { path: "/leaderboard", element: <Home /> },
-    { path: "/new", element: <Home /> },
+    { path: "/add", element: <Home /> },
     { path: "/", element: <Home /> },
     { path: "*", element: <Error /> },
   ]);

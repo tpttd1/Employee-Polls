@@ -15,7 +15,7 @@ const Dashboard = (props) => {
   const handleClick = (index) => {
     if (index === 0) navigate("/");
     if (index === 1) navigate("/leaderboard");
-    if (index === 2) navigate("/new");
+    if (index === 2) navigate("/add");
     setSelectedTab(index);
   };
 
@@ -32,7 +32,7 @@ const Dashboard = (props) => {
   useEffect(() => {
     const { pathname } = window.location;
     if (pathname === "/leaderboard") setSelectedTab(1);
-    if (pathname === "/new") setSelectedTab(2);
+    if (pathname === "/add") setSelectedTab(2);
     if (pathname === "/" || pathname.includes("questions")) setSelectedTab(0);
   }, []);
 
