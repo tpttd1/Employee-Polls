@@ -24,7 +24,7 @@ code {
 
 .form-login {
   max-width: 800px;
-  margin: 100px auto 0;
+  margin: 50px auto 0;
 }
 
 .img-container {
@@ -56,9 +56,24 @@ code {
   background: #3948b8;
   border: none;
 }
+
 #btn-login:hover {
   cursor: pointer;
   background: #535eb3;
+}
+
+#wrapper-login-as {
+  border-top: 1px solid gray;
+  margin-top: 50px;
+}
+
+#select-user {
+  width: 500px;
+  padding: 8px;
+}
+
+.item-user {
+  padding: 8px;
 }
 
 .wrapper-tabs {
@@ -129,7 +144,7 @@ code {
 
 #wrapper-new {
   text-align: center;
-  max-width: 600px;
+  max-width: 800px;
   margin: 50px auto 0;
 }
 
@@ -222,4 +237,51 @@ code {
 .btn-show:hover {
   cursor: pointer;
   background-color: #e1e1e1;
+}
+
+.answers {
+  display: flex;
+}
+
+.wrapper-answer {
+  margin: 0 12px;
+  width: 50%;
+}
+
+.answer-content {
+  padding: 4px 12px;
+  min-height: 50px;
+  border: 1px solid #cecece;
+}
+
+.btn-submit-answer {
+  padding: 12px;
+  color: white;
+  background: #2c78a1;
+  cursor: pointer;
+}
+
+.btn-submit-answer.disabled {
+  pointer-events: none;
+}
+#wrapper-voted {
+  width: 100%;
+}
+
+#wrapper-voted .voted-detail,
+#wrapper-voted .voted-title {
+  border: 1px solid #d9d9d9;
+  padding: 8px;
+}
+
+#wrapper-voted .voted-title {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #7589b4;
+  text-transform: capitalize;
+}
+
+#wrapper-voted .voted-detail.active {
+  background-color: #7bb089;
 }

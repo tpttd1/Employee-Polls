@@ -1,5 +1,5 @@
 import { ADD_QUESTION, STORAGE_QUESTIONS, LOGIN_USER_SUCCESS, STORAGE_USERS } from "../../constants";
-import { _getQuestions, _getUsers } from "../../data/_DATA";
+import { _getQuestions, _getUsers, _saveQuestion, _saveQuestionAnswer } from "../../data/_DATA";
 
 const saveQuestions = (questions) => ({
   type: STORAGE_QUESTIONS,
@@ -51,4 +51,13 @@ const addUser = (user) => ({
 
 export const loginUser = (user) => (dispatch) => {
   dispatch(addUser(user));
+};
+
+export const saveQuestion = (question) => () => {
+  _saveQuestion(question);
+};
+
+
+export const saveQuestionAnswer = (answer) => () => {
+  _saveQuestionAnswer(answer);
 };

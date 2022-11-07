@@ -13,9 +13,11 @@ function Home(props) {
 
   useEffect(() => {
     props.dispatch(getCurrentQuestions());
-    props.dispatch(getCurrentUsers());
+    if (props.auth.users.length === 0) {
+      props.dispatch(getCurrentUsers());
+    }
   }, []);
-
+  
   return (
     <div className="app">
       <Dashboard />

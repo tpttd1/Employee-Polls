@@ -33,7 +33,7 @@ const Dashboard = (props) => {
     const { pathname } = window.location;
     if (pathname === "/leaderboard") setSelectedTab(1);
     if (pathname === "/new") setSelectedTab(2);
-    if (pathname === "/") setSelectedTab(0);
+    if (pathname === "/" || pathname.includes("questions")) setSelectedTab(0);
   }, []);
 
   return (
@@ -53,7 +53,9 @@ const Dashboard = (props) => {
         <div className="user-information">
           <div className="user-avatar">
             <img src="logo192.png" alt="" className="user-avatar__img" />
-            <span>{props.auth.user?.username || "Unknown"}</span>
+            <span>
+              {props.auth.user?.name || props.auth.user?.username || "Unknown"}
+            </span>
           </div>
           <div id="logout" onClick={onLogout}>
             Logout

@@ -1,6 +1,7 @@
+import { useEffect } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "../redux/actions";
+import { getCurrentUsers, loginUser } from "../redux/actions";
 
 function Login(props) {
   const navigate = useNavigate();
@@ -14,6 +15,21 @@ function Login(props) {
     props.dispatch(loginUser(user));
     navigate("/");
   };
+
+  const onChange = (e) => {
+    const id = e.target.value;
+    if (id !== "none") {
+      const user = props.auth.users.find((u) => u.id === id);
+      props.dispatch(loginUser(user));
+      navigate("/");
+    }
+  };
+
+  useEffect(() => {
+    if (props.auth.users.length === 0) {
+      props.dispatch(getCurrentUsers());
+    }
+  }, []);
 
   return (
     <div className="login-page">
@@ -43,6 +59,21 @@ function Login(props) {
           <button id="btn-login" type="submit">
             Login
           </button>
+          <div id="wrapper-login-as">
+            <p id="title-login-as">Login as</p>
+            <select onChange={onChange} id="select-user">
+              <option className="item-user" value="none">
+                Select an user
+              </option>
+              {props.auth.users.map((user) => {
+                return (
+                  <option key={user.id} className="item-user" value={user.id}>
+                    {user.name}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
         </div>
       </form>
     </div>
