@@ -1,6 +1,8 @@
 import React from "react";
 
 const DetailVoted = ({ poll, count, type }) => {
+  const optionOneVotes = poll?.optionOne?.votes?.length || 0;
+  const optionTwoVotes = poll?.optionTwo?.votes?.length || 0;
   return (
     <table id="wrapper-voted">
       <thead>
@@ -14,19 +16,27 @@ const DetailVoted = ({ poll, count, type }) => {
         <tr>
           <td className="voted-detail">Percent</td>
           <td className={`voted-detail ${type === 1 ? "active" : ""}`}>
-            {((poll?.optionOne?.votes?.length / count) * 100).toFixed(2)} %
+            {(
+              (optionOneVotes / (optionOneVotes + optionTwoVotes)) *
+              100
+            ).toFixed(2)}{" "}
+            %
           </td>
           <td className={`voted-detail ${type === 1 ? "" : "active"}`}>
-            {((poll?.optionTwo?.votes?.length / count) * 100).toFixed(2)} %
+            {(
+              (optionTwoVotes / (optionOneVotes + optionTwoVotes)) *
+              100
+            ).toFixed(2)}{" "}
+            %
           </td>
         </tr>
         <tr>
           <td className="voted-detail">Count</td>
           <td className={`voted-detail ${type === 1 ? "active" : ""}`}>
-            {poll?.optionOne?.votes?.length}
+            {optionOneVotes}
           </td>
           <td className={`voted-detail ${type === 1 ? "" : "active"}`}>
-            {poll?.optionTwo?.votes?.length}
+            {optionTwoVotes}
           </td>
         </tr>
       </tbody>

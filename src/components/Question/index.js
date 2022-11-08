@@ -5,6 +5,7 @@ import Panel from "./Panel";
 const Question = (props) => {
   const [newQuestions, setNewQuestions] = useState([]);
   const [doneQuestions, setDoneQuestions] = useState([]);
+  const [showAnswered, setShowAnswered] = useState(true);
 
   const {
     auth: { user },
@@ -31,8 +32,25 @@ const Question = (props) => {
 
   return (
     <Fragment>
-      <Panel title="New questions" questions={newQuestions} />
-      <Panel title="Done" questions={doneQuestions} />
+      <div id="wrapper-btn-show">
+        <button
+          className="btn-show-answer"
+          onClick={() => setShowAnswered(false)}
+        >
+          Show Unanswered
+        </button>
+        <button
+          className="btn-show-answer"
+          onClick={() => setShowAnswered(true)}
+        >
+          Show Answered
+        </button>
+      </div>
+      {showAnswered ? (
+        <Panel title="Done" questions={doneQuestions} />
+      ) : (
+        <Panel title="New questions" questions={newQuestions} />
+      )}
     </Fragment>
   );
 };

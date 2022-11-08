@@ -47,7 +47,7 @@ const Detail = (props) => {
       <h1>{poll?.author}</h1>
       <div className="img-avatar">
         <img
-          src={avatar?.avatarURL || "login-icon.png"}
+          src={avatar?.avatarURL || "/login-icon.png"}
           alt="Avatar"
           className="avatar"
         />

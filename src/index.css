@@ -65,6 +65,7 @@ code {
 #wrapper-login-as {
   border-top: 1px solid gray;
   margin-top: 50px;
+  text-align: center;
 }
 
 #select-user {
@@ -284,4 +285,24 @@ code {
 
 #wrapper-voted .voted-detail.active {
   background-color: #7bb089;
+}
+
+#wrapper-btn-show {
+  text-align: right;
+}
+
+.btn-show-answer {
+  color: #fff;
+  min-width: max-content;
+  height: 36px;
+  padding: 8px 16px;
+  border-radius: 18px;
+  background: #3948b8;
+  border: none;
+  cursor: pointer;
+  margin: 20px 0 0 20px;
+}
+
+.img-avatar .avatar {
+  height: 200px;
 }

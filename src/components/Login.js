@@ -33,49 +33,21 @@ function Login(props) {
 
   return (
     <div className="login-page">
-      <form className="form-login" onSubmit={onSubmit}>
-        <div className="img-container">
-          <img src="login-icon.png" alt="Avatar" className="avatar" />
-        </div>
-        <div className="form-input">
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            placeholder="Enter username"
-            name="username"
-            minLength={3}
-            className="input input-username"
-            required
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            placeholder="Enter password"
-            name="password"
-            minLength={6}
-            className="input input-password"
-            required
-          />
-          <button id="btn-login" type="submit">
-            Login
-          </button>
-          <div id="wrapper-login-as">
-            <p id="title-login-as">Login as</p>
-            <select onChange={onChange} id="select-user">
-              <option className="item-user" value="none">
-                Select an user
+      <div id="wrapper-login-as">
+        <p id="title-login-as">Login as</p>
+        <select onChange={onChange} id="select-user">
+          <option className="item-user" value="none">
+            Select an user
+          </option>
+          {props.auth.users.map((user) => {
+            return (
+              <option key={user.id} className="item-user" value={user.id}>
+                {user.name}
               </option>
-              {props.auth.users.map((user) => {
-                return (
-                  <option key={user.id} className="item-user" value={user.id}>
-                    {user.name}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
-        </div>
-      </form>
+            );
+          })}
+        </select>
+      </div>
     </div>
   );
 }
