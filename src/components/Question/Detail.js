@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getCurrentQuestions, saveQuestionAnswer } from "../../redux/actions";
+import Navbar from "../Navbar";
 import DetailVoted from "./DetailVoted";
 import PollList from "./PollList";
 
@@ -31,7 +32,7 @@ const Detail = (props) => {
 
   useEffect(() => {
     const question = questions.find((q) => q.id === questionID);
-    if (questions.length === 0 || !question) navigate("/error");
+    if (questions.length === 0 || !question) navigate("/login");
     setPoll(question);
   }, [navigate, questionID, questions]);
 
@@ -43,21 +44,24 @@ const Detail = (props) => {
   }, [poll, user?.id]);
 
   return (
-    <div id="wrapper-new">
-      <h1>{poll?.author}</h1>
-      <div className="img-avatar">
-        <img
-          src={avatar?.avatarURL || "/login-icon.png"}
-          alt="Avatar"
-          className="avatar"
-        />
+    <>
+      <Navbar />
+      <div id="wrapper-new">
+        <h1>{poll?.author}</h1>
+        <div className="img-avatar">
+          <img
+            src={avatar?.avatarURL || "/login-icon.png"}
+            alt="Avatar"
+            className="avatar"
+          />
+        </div>
+        {hasDone ? (
+          <DetailVoted poll={poll} count={users.length} type={hasDone} />
+        ) : (
+          <PollList poll={poll} handleClick={handleClick} />
+        )}
       </div>
-      {hasDone ? (
-        <DetailVoted poll={poll} count={users.length} type={hasDone} />
-      ) : (
-        <PollList poll={poll} handleClick={handleClick} />
-      )}
-    </div>
+    </>
   );
 };
 

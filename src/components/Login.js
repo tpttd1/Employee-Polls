@@ -1,20 +1,10 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getCurrentUsers, loginUser } from "../redux/actions";
 
 function Login(props) {
   const navigate = useNavigate();
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const username = formData.get("username");
-    const password = formData.get("password");
-    const user = { username, password };
-    props.dispatch(loginUser(user));
-    navigate("/");
-  };
 
   const onChange = (e) => {
     const id = e.target.value;
@@ -29,13 +19,13 @@ function Login(props) {
     if (props.auth.users.length === 0) {
       props.dispatch(getCurrentUsers());
     }
-  }, []);
+  }, [props]);
 
   return (
     <div className="login-page">
       <div id="wrapper-login-as">
         <p id="title-login-as">Login as</p>
-        <select onChange={onChange} id="select-user">
+        <select onChange={onChange} data-testid="test-select" id="select-user">
           <option className="item-user" value="none">
             Select an user
           </option>

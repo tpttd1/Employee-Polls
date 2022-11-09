@@ -1,7 +1,10 @@
 import React, { memo } from "react";
+import { useNavigate } from "react-router-dom";
 import { getCurrentQuestions, saveQuestion } from "../redux/actions";
 
 const New = (props) => {
+  const navigate = useNavigate();
+
   const onSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -16,6 +19,7 @@ const New = (props) => {
     props.update.dispatch(getCurrentQuestions());
     window.alert("Created");
     e.target.reset();
+    navigate("/");
   };
 
   return (

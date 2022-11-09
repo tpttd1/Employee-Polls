@@ -1,8 +1,9 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getCurrentQuestions, getCurrentUsers } from "../redux/actions";
 import Dashboard from "./Dashboard";
+import Navbar from "./Navbar";
 
 function Home(props) {
   const navigate = useNavigate();
@@ -16,10 +17,11 @@ function Home(props) {
     if (props.auth.users.length === 0) {
       props.dispatch(getCurrentUsers());
     }
-  }, []);
+  }, [props]);
   
   return (
     <div className="app">
+      <Navbar />
       <Dashboard />
     </div>
   );

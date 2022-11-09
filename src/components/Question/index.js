@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import Panel from "./Panel";
 
@@ -34,12 +34,14 @@ const Question = (props) => {
     <Fragment>
       <div id="wrapper-btn-show">
         <button
+          data-testid="btn-show-done"
           className="btn-show-answer"
           onClick={() => setShowAnswered(false)}
         >
           Show Unanswered
         </button>
         <button
+          data-testid="btn-show-answer"
           className="btn-show-answer"
           onClick={() => setShowAnswered(true)}
         >
