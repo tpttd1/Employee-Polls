@@ -2,10 +2,7 @@ import React, { useMemo } from "react";
 import { connect } from "react-redux";
 
 const LeaderBoard = (props) => {
-  const {
-    auth,
-    question: { questions },
-  } = props;
+  const { auth } = props;
 
   const rankPoll = useMemo(() => {
     auth.users.sort((a, b) => {
@@ -16,7 +13,7 @@ const LeaderBoard = (props) => {
       );
     });
     return auth.users;
-  }, [auth, questions.length]);
+  }, [auth]);
 
   return (
     <table id="wrapper-leaderboard">

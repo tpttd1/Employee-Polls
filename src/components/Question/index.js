@@ -13,11 +13,11 @@ const Question = (props) => {
   } = props;
 
   useEffect(() => {
-    if (user) {
+    if (user && user?.answers) {
       const newPoll = [];
       const donePoll = [];
 
-      const answers = Object.keys(user?.answers);
+      const answers = Object.keys(user.answers);
       questions.forEach((question) => {
         if (answers.includes(question.id)) {
           donePoll.push(question);
