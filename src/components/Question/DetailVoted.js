@@ -1,6 +1,6 @@
 import React from "react";
 
-const DetailVoted = ({ poll, count, type }) => {
+const DetailVoted = ({ poll, type }) => {
   const optionOneVotes = poll?.optionOne?.votes?.length || 0;
   const optionTwoVotes = poll?.optionTwo?.votes?.length || 0;
   return (

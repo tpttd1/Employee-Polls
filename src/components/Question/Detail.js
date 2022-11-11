@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { loginUser, saveQuestionAnswer } from "../../redux/actions";
+import { getCurrentQuestions, loginUser, saveQuestionAnswer } from "../../redux/actions";
 import Navbar from "../Navbar";
 import DetailVoted from "./DetailVoted";
 import PollList from "./PollList";
@@ -27,6 +27,7 @@ const Detail = (props) => {
     props.dispatch(saveQuestionAnswer(answer));
     user.answers[questionID] = content;
     props.dispatch(loginUser(user));
+    props.dispatch(getCurrentQuestions());
     localStorage.setItem("voted", "true");
     window.alert("Success");
     navigate("/");
@@ -58,7 +59,7 @@ const Detail = (props) => {
           />
         </div>
         {hasDone ? (
-          <DetailVoted poll={poll} count={users.length} type={hasDone} />
+          <DetailVoted poll={poll} type={hasDone} />
         ) : (
           <PollList poll={poll} handleClick={handleClick} />
         )}
