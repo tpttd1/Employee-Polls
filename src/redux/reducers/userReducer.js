@@ -5,7 +5,7 @@ import {
 } from "../../constants";
 
 const INIT_STATE = {
-  user: localStorage.getItem("user"),
+  user: null,
   users: [],
   loading: false,
 };

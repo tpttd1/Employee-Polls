@@ -5,7 +5,7 @@ import Panel from "./Panel";
 const Question = (props) => {
   const [newQuestions, setNewQuestions] = useState([]);
   const [doneQuestions, setDoneQuestions] = useState([]);
-  const [showAnswered, setShowAnswered] = useState(true);
+  const [showAnswered, setShowAnswered] = useState(false);
 
   const {
     auth: { user },
@@ -29,6 +29,14 @@ const Question = (props) => {
       setDoneQuestions(donePoll);
     }
   }, [questions, user]);
+
+  useEffect(() => {
+    const voted = localStorage.getItem('voted');
+    if (voted) {
+      setShowAnswered(true);
+      localStorage.removeItem('voted');
+    }
+  }, []);
 
   return (
     <Fragment>
